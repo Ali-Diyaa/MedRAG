@@ -1,0 +1,32 @@
+version: "3.9"
+
+services:
+  medical-rag:
+    build: .
+    image: medical-rag-app
+    container_name: medical_rag
+
+    # Pass your HuggingFace token as an env variable — never hardcode it
+    environment:
+      - HUGGINGFACE_TOKEN=${HUGGINGFACE_TOKEN}
+
+    ports:
+      - "7860:7860"
+
+    # Mount a volume so downloaded model weights survive container restarts
+    volumes:
+      - hf_cache:/app/.cache/huggingface
+
+    # GPU access (requires nvidia-container-toolkit on the host)
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+
+    restart: unless-stopped
+
+volumes:
+  hf_cache:
