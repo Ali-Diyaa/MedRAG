@@ -1,0 +1,28 @@
+# Core deep-learning / LLM stack
+torch>=2.2.0
+transformers>=4.40.0
+bitsandbytes>=0.43.0
+accelerate>=0.29.0
+sentencepiece
+
+# LangChain ecosystem
+langchain>=0.2.0
+langchain-community>=0.2.0
+langchain-core>=0.2.0
+langchain-text-splitters>=0.2.0
+
+# Embeddings & vector store
+sentence-transformers>=2.7.0
+faiss-gpu                        # use faiss-cpu if no GPU available
+
+# PDF parsing
+pdfplumber>=0.11.0
+
+# Guardrail classifier
+scikit-learn>=1.4.0
+
+# Gradio UI
+gradio>=4.36.0
+
+# Hugging Face Hub (for notebook_login / token auth)
+huggingface_hub>=0.23.0
